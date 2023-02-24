@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import {HttpException, Injectable} from '@nestjs/common';
 import {InjectModel} from "@nestjs/sequelize";
 import {UserModel} from "./user.model";
 import {UserDto} from "./dto/user.dto";
@@ -8,7 +8,11 @@ export class UserService {
     constructor(@InjectModel(UserModel) private userRepo: typeof UserModel) {
     }
     async getUser() {
-        return await this.userRepo.findAll()
+        try {
+            return await this.userRepo.findAll()
+        } catch (e) {
+            return e.message
+        }
     }
 
     async create(dto: UserDto) {
