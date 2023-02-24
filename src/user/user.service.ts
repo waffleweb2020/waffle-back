@@ -9,7 +9,7 @@ export class UserService {
     }
     async getUser() {
         try {
-            return await this.userRepo.findAll()
+            return await this.userRepo.findAll({include: {all:true}})
         } catch (e) {
             return e.message
         }
