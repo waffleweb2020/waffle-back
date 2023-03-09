@@ -3,9 +3,9 @@ import { AppModule } from './app.module';
 import {ValidationPipe} from "./pipes/validation.pipe";
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, {cors: true});
+  const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe())
-  await app.listen(3001, () => {
+  await app.listen(5000, () => {
     console.log('ok')
   });
 }

@@ -9,7 +9,7 @@ import {UserModel} from "./user/user.model";
   imports: [
     SequelizeModule.forRoot({
       dialect: 'postgres',
-      host: 'localhost',
+      host: 'waffledb',
       port: 5432,
       username: 'postgres',
       password: 'qwerty',
